@@ -1,5 +1,3 @@
-#coding=utf-8
-
 from __future__ import print_function
 from database import *
 from GoogleAPI import APIDriveConnect
@@ -21,16 +19,13 @@ def create_message(sender, to, subject, message_text):
     return {'raw': base64.urlsafe_b64encode(message.as_string().encode()).decode()}
 
 def main():
-    #Conexión inicial a BD
 
     try:
         miBD = MySql('localhost','root','root')
-        print(' "Conexión Exitosa"')
+        print(' "Conexion Exitosa"')
     except Exception:
         print("Error al iniciar la base de datos")
         sys.exit(1)
-
-    #Conexión con API y lógica principal.
 
     try:
         service = APIDriveConnect()
@@ -45,7 +40,6 @@ def main():
         print('No se encontraron archivos en el drive')
     else:
         print('Listado de archivos encontrados:')
-        #miCursor.execute("""Truncate table documentosDrive""") 
 
         for item in items:
             datos = [item['id'], item['name'], item['owners'][0]['emailAddress'], item['shared'], item['modifiedTime'], item['mimeType']]
@@ -62,15 +56,15 @@ def main():
                 service.permissions().delete(fileId=item['id'], permissionId='anyoneWithLink').execute()
                 origen = 'Challenge.MELI.2020@gmail.com' 
                 destino = '"'+item['owners'][0]['emailAddress']+'"' 
-                msg= '\n Estimado \n Por cuestiones de seguridad, se modificó la visibilidad del archivo: "{0}" , para mayor informacion contacte con el Administrador.'.format(item['name']) #String que contiene el mensaje
+                msg= '\n Estimado, por cuestiones de seguridad, se modifico la visibilidad del archivo: "{0}" , para mayor informacion contacte con el Administrador.'.format(item['name']) #String que contiene el mensaje
                 
                 # Credenciales
                 usuario = 'challenge.meli.2020@gmail.com'
                 password = 'QWERT567zxc'
                 
-                # Envío del correo
+                # Envio del correo
                 gmail = APIDriveConnect('gmail')
-                asunto = 'Documento Drive'
+                asunto = 'Documento Drive - Cambio de visibilidad'
                 send_message = create_message(origen, destino, asunto, msg)
                 gmail.users().messages().send(userId=usuario, body=send_message).execute()
 
@@ -86,5 +80,5 @@ if __name__ == '__main__':
     main()
 
 print("")
-print(" Fin de la ejecución")
+print(" Fin de la ejecucion")
 
