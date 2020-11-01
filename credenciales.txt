@@ -1,9 +1,2 @@
 Challenge.MELI.2020
 QWERT567zxc
-
-
-
-Client ID: 876165124-cf4d91opmda37k3e4b63bdro715gqb4k.apps.googleusercontent.com
-Client Secret: T15_WLjhSBDdPQwDqooRgpCM
-
-
