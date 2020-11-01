@@ -20,7 +20,7 @@ Cuanto más fácil sea reproducir el challenge, mejor :)
 # Pasos para la ejecución
 
  1. Descargar los archivos del siguiente link https://github.com/mauro-caruso92/challenge-meli 
- 2. Previo a la ejecución se deberá contar con MySQL instalado.
+ 2. Previo a la ejecución se deberá contar con MySQL Server instalado.
  3. En la consola, ingresar al directorio donde se alojan los archivos e instalar las librerías que utiliza la aplicación. Para ello se deberá escribir la siguiente línea de comando: **pip install -r requirements.txt**
  4. Luego de la instalación del requirements.txt, se deberá proceder a ejecutar el comando **python main.py**
 
